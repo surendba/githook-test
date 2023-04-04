@@ -1,0 +1,22 @@
+name: Build and Deploy 
+
+on:
+  push:
+    branches:
+      - main
+      - master
+
+jobs:
+  ci:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        node: [14]
+
+    steps:
+      - name: Get runner environment variables
+        id: runner
+        uses: msansoni/runner-environment-action@v1
+
