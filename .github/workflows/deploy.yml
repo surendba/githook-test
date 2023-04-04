@@ -18,6 +18,6 @@ jobs:
     steps:
       - name: Group of log lines
         run: |
-            docker pa -a
+            docker ps -a
             echo "Inside group"
             echo "::endgroup::"
