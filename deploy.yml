@@ -1,0 +1,23 @@
+name: Build and Deploy 
+
+on:
+  push:
+    branches:
+      - main
+      - master
+
+jobs:
+  ci:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        node: [14]
+
+    steps:
+      - name: Group of log lines
+        run: |
+            docker ps -a
+            echo "Inside group"
+            echo "::endgroup::"
