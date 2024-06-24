@@ -12,7 +12,7 @@ repository_full_name = f"/repos/{owner}/{repo}"
 
 g = Github(token)
 
-repo = g.get_repo()
+repo = g.get_repo(repository_full_name)
 
 open_issues = repo.get_issues(state='open')
 
