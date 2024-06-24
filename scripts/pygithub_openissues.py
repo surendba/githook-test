@@ -2,13 +2,11 @@ from github import Github
 import os
 
 token = os.getenv('GITHUB_TOKEN')
-repo = os.getenv('GITHUB_REPOSITORY')
-owner = os.getenv('GITHUB_REPOSITORY_OWNER')
+repo = os.getenv('GITHUB_REPOSITORY')  # this bring both owner and repo in the format rep-owner/repo-name
 
 print(f"Repo is  : {repo}")
-print(f"Owner is : {owner}")
 
-repository_full_name = f"{owner}/{repo}"
+repository_full_name = f"{repo}"
 
 g = Github(token)
 
