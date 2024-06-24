@@ -3,27 +3,32 @@
 # You can adjust the behavior by modifying this file.
 # For more information, see:
 # https://github.com/actions/stale
-name: Mark stale issues and pull requests
+name: Close All Opened Issues
 
 on:
-  #schedule:
-  #- cron: '10 15 * * *'
+  # manual trigger
   workflow_dispatch:
 
 jobs:
-  stale:
-
+  close_issues:
     runs-on: ubuntu-latest
-    permissions:
-      issues: write
-      pull-requests: write
-
     steps:
-    - uses: actions/stale@v5
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Setup python
+      uses: actions/setup-python@2
       with:
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
-        start-date: '2024-03-24T01:00:00Z' # ISO 8601 or RFC 2822
-        stale-issue-message: 'Stale issue message'
-        stale-pr-message: 'Stale pull request message'
-        stale-issue-label: 'no-issue-activity'
-        stale-pr-label: 'no-pr-activity'
+        python-version: '3.x'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install requests
+
+    - name: Run script to close issues
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_REPOSITORY: ${{ github.repository }}
+      run: |
+        python ./scripts/close_issues.py
