@@ -16,3 +16,12 @@ open_issues = repo.get_issues(state='open')
 
 for issue in open_issues:
     print(f"Issue #{issue.number}: {issue.title}")
+
+
+
+#check the rate limit
+rate_limit = g.get_rate_limit()
+print(f"Rate limit remaining = {rate_limit.core.remaining}")
+print(f"Rate limit = {rate_limit.core.limit}")
+print(f"Rate Limit Remaining: {rate_limit.core.remaining}/{rate_limit.core.limit}")
+    
