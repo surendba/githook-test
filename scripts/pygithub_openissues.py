@@ -16,6 +16,9 @@ open_issues = repo.get_issues(state='open')
 
 for issue in open_issues:
     print(f"Issue #{issue.number}: {issue.title}")
+    #make a comment on the issue
+    issue.comments = "Closing this issue from github action..."
+    issue.edit(state='closed')
 
 
 
