@@ -17,16 +17,23 @@ def close_issues():
     response = requests.get(url, headers=headers, params=params)
     issues = response.json()
 
+    print(f"number of issues : {issues.count}")
+
     for issue in issues:
         if "pull_request" not in issue:
             issue_number = issue["number"]
-            close_url = f"{url}/{issue_number}"
-            data = {"state": "closed"}
-            close_respose = requests.patch(close_url, headers=headers, json=data)
-            if close_respose.status_code == 200:
-                print(f"Issue #{issue_number} is closed.")
-            else:
-                print(f"Failed to close issue #{issue_number}.")
+            print(f"Issue Number is : {issue_number}")
+
+    # for issue in issues:
+    #     if "pull_request" not in issue:
+    #         issue_number = issue["number"]
+    #         close_url = f"{url}/{issue_number}"
+    #         data = {"state": "closed"}
+    #         close_respose = requests.patch(close_url, headers=headers, json=data)
+    #         if close_respose.status_code == 200:
+    #             print(f"Issue #{issue_number} is closed.")
+    #         else:
+    #             print(f"Failed to close issue #{issue_number}.")
 
 
 if __name__ == "__main__":
