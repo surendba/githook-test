@@ -2,7 +2,7 @@ import requests
 import os
 
 token = os.getenv('GITHUB_TOKEN')
-repo = os. environ('GITHUB_REPOSITORY')
+repo = os.environ('GITHUB_REPOSITORY')
 
 url =f"https://api.github.com/repos/{repo}/issues"
 
