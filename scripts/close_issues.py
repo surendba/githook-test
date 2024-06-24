@@ -25,7 +25,7 @@ def close_issues():
             close_respose = requests.patch(close_url, headers=headers, json=data)
             if close_respose.status_code == 200:
                 print(f"Issue #{issue_number} is closed.")
-            else
+            else:
                 print(f"Failed to close issue #{issue_number}.")
 
 
