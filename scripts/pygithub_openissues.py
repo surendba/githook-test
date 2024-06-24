@@ -8,7 +8,7 @@ owner = os.getenv('GITHUB_REPOSITORY_OWNER')
 print(f"Repo is  : {repo}")
 print(f"Owner is : {owner}")
 
-repository_full_name = f"/repos/{owner}/{repo}"
+repository_full_name = f"{owner}/{repo}"
 
 g = Github(token)
 
