@@ -22,7 +22,7 @@ def close_issues():
             issue_number = issue["number"]
             close_url = f"{url}/{issue_number}"
             data = {"state": "closed"}
-            close_respose = requests.patch(close_url, headers=headers, json=data=)
+            close_respose = requests.patch(close_url, headers=headers, json=data)
             if close_respose.status_code == 200:
                 print(f"Issue #{issue_number} is closed.")
             else
