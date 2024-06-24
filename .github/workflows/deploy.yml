@@ -1,7 +1,15 @@
 name: CI
 on:
-  push:
-    branches: [ main , master ]
+  #push:
+  # branches: [ main , master ]
+
+  # manual trigger
+  workflow_dispatch:
+      inputs:
+        tags:
+          description: 'Test tags'
+          required: false
+    
 jobs:
   container-test-job:
     runs-on: ubuntu-latest
